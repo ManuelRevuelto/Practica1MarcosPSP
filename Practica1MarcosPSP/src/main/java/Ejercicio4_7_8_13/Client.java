@@ -1,4 +1,4 @@
-package Ejercicio4;
+package Ejercicio4_7_8_13;
 
 public class Client extends Thread{
 	private Cartera cartera;

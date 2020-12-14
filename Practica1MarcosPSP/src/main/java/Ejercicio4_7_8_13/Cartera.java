@@ -1,4 +1,4 @@
-package Ejercicio4;
+package Ejercicio4_7_8_13;
 
 import java.text.DecimalFormat;
 
@@ -16,7 +16,6 @@ public class Cartera {
 		} catch (InterruptedException e) {
 			System.out.println("Error al esperar un segundo");
 		}
-		dinero = 0;
 		dinero += Math.random() * 101;
 		System.out.println("El dinero actual del client " + Thread.currentThread().getId() + " es de: "+ decimalFormat.format(dinero));
 	}
@@ -31,9 +30,12 @@ public class Cartera {
 		} catch (InterruptedException e) {
 			System.out.println("Error al esperar un segundo");
 		}
-		dinero = 0;
-		dinero += Math.random() * 101;
+		dinero -= Math.random() * 101;
 		System.out.println("El dinero actual del worker " + Thread.currentThread().getId() + " es de: "+ decimalFormat.format(getDinero()));
+	}
+	
+	public synchronized void verDinero() {
+		System.out.println(decimalFormat.format(getDinero()));
 	}
 
 	// GETTERS AND SETTERS
