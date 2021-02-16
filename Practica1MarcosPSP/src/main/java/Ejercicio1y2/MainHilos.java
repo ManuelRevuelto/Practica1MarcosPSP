@@ -11,7 +11,6 @@ public class MainHilos {
 		}
 		for (MisHilos h : misHilos) {
 			h.start();
-
 		}
 	}
 }

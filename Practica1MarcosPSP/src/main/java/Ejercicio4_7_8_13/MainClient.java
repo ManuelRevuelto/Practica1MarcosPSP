@@ -1,13 +1,18 @@
 package Ejercicio4_7_8_13;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainClient {
 	public static void main(String[] args) {
+		List<Client> clientes = new ArrayList<Client>();
+		List<Worker> workers = new ArrayList<Worker>();
 		Cartera cartera = new Cartera();
 
-		crearClientes(cartera);
-		crearWorkers(cartera);
+		crearClientes(cartera, clientes);
+		crearWorkers(cartera, workers);
 		
-		verDinero(cartera);
+		cartera.verDinero();
 	}
 
 	/**
@@ -16,9 +21,12 @@ public class MainClient {
 	 * @param misClientes
 	 * @param cartera
 	 */
-	private static void crearClientes(Cartera cartera) {
+	private static void crearClientes(Cartera cartera, List<Client> clientes) {
 		for (int i = 0; i < 10; i++) {
-			new Client(cartera).start();
+			clientes.add(new Client(cartera));
+		}
+		for (Client c : clientes) {
+			c.start();
 		}
 	}
 
@@ -28,12 +36,15 @@ public class MainClient {
 	 * @param misWorkers
 	 * @param cartera
 	 */
-	private static void crearWorkers(Cartera cartera) {
+	private static void crearWorkers(Cartera cartera, List<Worker> workers) {
 		for (int i = 0; i < 10; i++) {
-			new Worker(cartera).start();
+			workers.add(new Worker(cartera));
+		}
+		for (Worker w : workers) {
+			w.start();
 		}
 	}
-	
+
 	private static void verDinero(Cartera cartera) {
 		System.out.println(cartera.getDinero());
 	}
